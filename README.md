@@ -52,3 +52,5 @@ The controller can expose sensor and status values through SNMP, making
 it possible to feed the AC into a local Grafana / InfluxDB setup.
 
 There is no cloud service involved.
+<img width="934" height="641" alt="image" src="https://github.com/user-attachments/assets/eaab7c1d-6b10-4a90-9afe-6216fa45a3fb" />
+
