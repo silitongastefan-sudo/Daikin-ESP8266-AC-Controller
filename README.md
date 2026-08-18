@@ -1,81 +1,53 @@
-# Daikin-ESP8266-AC-Controller
-An ESP8266-based WLAN controller for compatible Daikin air conditioners using an IR transmitter
-Features
+# Daikin ESP8266 AC Controller
 
-Local Wi-Fi control through an ESP8266
+ESP8266-based local Wi-Fi controllers for Daikin air conditioners.
 
-Daikin AC control using IRremoteESP8266
+I originally built this for a Daikin FTK inverter-series AC using
+IRremoteESP8266. Later, I made a separate controller for a Daikin FTV
+unit where some functions had to be implemented using captured raw IR
+frames from the original remote.
 
-AHT10 temperature/humidity monitoring
+## Firmware
 
-Built-in web dashboard
+### FTK Inverter Series
 
-HTTP API for AC control
+`espserverdaikinAC.ino`
 
-Direct temperature setpoint API
+The original controller for the Daikin FTK inverter series.
 
-Direct fan-speed API
+- Wi-Fi control
+- Daikin IR control using IRremoteESP8266
+- Temperature and fan control
+- AHT10 temperature/humidity monitoring
+- Web interface
+- HTTP API
+- SNMP monitoring
 
-SNMP monitoring
+### FTV Series
 
-Designed for Grafana, InfluxDB, and local SCADA integration
+`espserverdaikinFTKVToggleOnly.ino`
 
-No cloud service required
+A separate controller for the Daikin FTV series.
 
-Hardware
+This version uses captured raw IR frames from the original FTV remote
+for functions that aren't handled by the normal Daikin implementation.
 
-Required
+It currently includes the captured timer-related frames used to control
+the AC's ON/OFF timer.
 
-ESP8266 development board
+The timer frames are tied to the captured remote state and are not yet
+dynamically generated.
 
-IR LED / IR transmitter
+## Hardware
 
-Compatible Daikin air conditioner
+- ESP8266
+- IR transmitter
+- Compatible Daikin air conditioner
+- AHT10 sensor (optional)
 
-USB power supply for the ESP8266
+## Local monitoring
 
-Optional
+The controller can expose sensor and status values through SNMP, making
+it possible to feed the AC into a local Grafana / InfluxDB setup.
 
-AHT10 temperature/humidity sensor
-
-SNMP monitoring system
-
-Wiring
-
-The current firmware uses D5 / GPIO14 for the IR transmitter.
-
-ESP8266 D5 / GPIO14
-        |
-        v
-   IR transmitter
-
-The AHT10 uses the ESP8266 I²C interface.
-
-Software
-
-Libraries used:
-
-ESP8266WiFi
-
-ESP8266WebServer
-
-IRremoteESP8266
-
-Adafruit_AHTX0
-
-Wire
-
-SNMP_Agent
-
-The Daikin implementation uses IRDaikinESP.
-
-Configuration
-
-Configure Wi-Fi and network settings before uploading:
-
-const char* ssid = "YOUR_WIFI";
-const char* password = "YOUR_PASSWORD";
-
-IPAddress local_IP(192,168,1,250);
-IPAddress gateway(192,168,1,1);
-IPAddress subnet(255,255,255,0);
+There is no cloud service involved.
