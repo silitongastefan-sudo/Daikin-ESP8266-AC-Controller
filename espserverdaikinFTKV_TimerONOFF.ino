@@ -142,13 +142,9 @@ void sendRawFrame(const uint16_t *data, size_t length, const char *name) {
 
   digitalWrite(LED_PIN, LOW);
 
-  // Replay exact captured frame 3 times
-  for (int i = 0; i < 3; i++) {
 
-    irsend.sendRaw(data, length, 38);
+  irsend.sendRaw(data, length, 38);
 
-    delay(120);
-  }
 
   digitalWrite(LED_PIN, HIGH);
 
@@ -226,8 +222,9 @@ void handleRoot() {
 <head>
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="2">
 
-<title>Stefan AC</title>
+<title>Main Room AC</title>
 
 <style>
 
