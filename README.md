@@ -53,4 +53,6 @@ it possible to feed the AC into a local Grafana / InfluxDB setup.
 
 There is no cloud service involved.
 <img width="934" height="641" alt="image" src="https://github.com/user-attachments/assets/eaab7c1d-6b10-4a90-9afe-6216fa45a3fb" />
+<img width="811" height="863" alt="image" src="https://github.com/user-attachments/assets/e75072ba-f976-4839-9745-744e6e213238" />
+
 
