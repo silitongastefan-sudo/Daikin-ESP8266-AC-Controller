@@ -34,7 +34,7 @@ This version uses captured raw IR frames from the original FTV remote
 for functions that aren't handled by the normal Daikin implementation.
 
 It currently includes the captured timer-related frames used to control
-the AC's ON/OFF timer.
+the AC's ON/OFF.
 
 The timer frames are tied to the captured remote state and are not yet
 dynamically generated.
